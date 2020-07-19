@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B824BAC824AE63AD00FB59DC"
-               BuildableName = "Nonogram Infinity.app"
+               BuildableName = "Nonogram &#x221e;.app"
                BlueprintName = "Nonogram Infinity"
                ReferencedContainer = "container:Nonogram Infinity.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B824BAC824AE63AD00FB59DC"
-            BuildableName = "Nonogram Infinity.app"
+            BuildableName = "Nonogram &#x221e;.app"
             BlueprintName = "Nonogram Infinity"
             ReferencedContainer = "container:Nonogram Infinity.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B824BAC824AE63AD00FB59DC"
-            BuildableName = "Nonogram Infinity.app"
+            BuildableName = "Nonogram &#x221e;.app"
             BlueprintName = "Nonogram Infinity"
             ReferencedContainer = "container:Nonogram Infinity.xcodeproj">
          </BuildableReference>

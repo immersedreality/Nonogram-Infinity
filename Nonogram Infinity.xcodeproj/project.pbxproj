@@ -7,23 +7,37 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B80650EA24B3FF3500A4F958 /* BGM.wav in Resources */ = {isa = PBXBuildFile; fileRef = B80650E924B3FF3500A4F958 /* BGM.wav */; };
+		B80650EC24B4022600A4F958 /* TitleScreenScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80650EB24B4022600A4F958 /* TitleScreenScene.swift */; };
+		B80650EE24B4023A00A4F958 /* GameOverScreenScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80650ED24B4023A00A4F958 /* GameOverScreenScene.swift */; };
+		B80650F024B40A5800A4F958 /* SettingsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80650EF24B40A5800A4F958 /* SettingsScene.swift */; };
+		B809DB7924B40CAA007F58EF /* TitleScreenScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B809DB7824B40CAA007F58EF /* TitleScreenScene.sks */; };
+		B809DB7B24B40F3D007F58EF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B809DB7A24B40F3D007F58EF /* Constants.swift */; };
 		B824BACD24AE63AD00FB59DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B824BACC24AE63AD00FB59DC /* AppDelegate.swift */; };
 		B824BAD324AE63AD00FB59DC /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B824BAD224AE63AD00FB59DC /* GameScene.swift */; };
-		B824BAD524AE63AD00FB59DC /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B824BAD424AE63AD00FB59DC /* GameViewController.swift */; };
-		B824BAD824AE63AD00FB59DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B824BAD624AE63AD00FB59DC /* Main.storyboard */; };
+		B824BAD524AE63AD00FB59DC /* NonogramInfinityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B824BAD424AE63AD00FB59DC /* NonogramInfinityViewController.swift */; };
+		B824BAD824AE63AD00FB59DC /* NonogramInfinity.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B824BAD624AE63AD00FB59DC /* NonogramInfinity.storyboard */; };
 		B824BADA24AE63B000FB59DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B824BAD924AE63B000FB59DC /* Assets.xcassets */; };
 		B824BADD24AE63B000FB59DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B824BADB24AE63B000FB59DC /* LaunchScreen.storyboard */; };
+		B89F69A424B41D2D00472067 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B89F69A324B41D2D00472067 /* GameScene.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B824BAC924AE63AD00FB59DC /* Nonogram Infinity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Nonogram Infinity.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B80650E924B3FF3500A4F958 /* BGM.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = BGM.wav; sourceTree = "<group>"; };
+		B80650EB24B4022600A4F958 /* TitleScreenScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleScreenScene.swift; sourceTree = "<group>"; };
+		B80650ED24B4023A00A4F958 /* GameOverScreenScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScreenScene.swift; sourceTree = "<group>"; };
+		B80650EF24B40A5800A4F958 /* SettingsScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScene.swift; sourceTree = "<group>"; };
+		B809DB7824B40CAA007F58EF /* TitleScreenScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TitleScreenScene.sks; sourceTree = "<group>"; };
+		B809DB7A24B40F3D007F58EF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		B824BAC924AE63AD00FB59DC /* Nonogram ∞.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Nonogram ∞.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B824BACC24AE63AD00FB59DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B824BAD224AE63AD00FB59DC /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
-		B824BAD424AE63AD00FB59DC /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
-		B824BAD724AE63AD00FB59DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B824BAD424AE63AD00FB59DC /* NonogramInfinityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonogramInfinityViewController.swift; sourceTree = "<group>"; };
+		B824BAD724AE63AD00FB59DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/NonogramInfinity.storyboard; sourceTree = "<group>"; };
 		B824BAD924AE63B000FB59DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B824BADC24AE63B000FB59DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B824BADE24AE63B000FB59DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B89F69A324B41D2D00472067 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +51,48 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B80650E824B3FF1D00A4F958 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				B80650E924B3FF3500A4F958 /* BGM.wav */,
+			);
+			path = Audio;
+			sourceTree = "<group>";
+		};
+		B809DB7424B40C09007F58EF /* GameOver */ = {
+			isa = PBXGroup;
+			children = (
+				B80650ED24B4023A00A4F958 /* GameOverScreenScene.swift */,
+			);
+			path = GameOver;
+			sourceTree = "<group>";
+		};
+		B809DB7524B40C0E007F58EF /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				B824BAD224AE63AD00FB59DC /* GameScene.swift */,
+				B89F69A324B41D2D00472067 /* GameScene.sks */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		B809DB7624B40C12007F58EF /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				B80650EF24B40A5800A4F958 /* SettingsScene.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		B809DB7724B40C17007F58EF /* TitleScreen */ = {
+			isa = PBXGroup;
+			children = (
+				B80650EB24B4022600A4F958 /* TitleScreenScene.swift */,
+				B809DB7824B40CAA007F58EF /* TitleScreenScene.sks */,
+			);
+			path = TitleScreen;
+			sourceTree = "<group>";
+		};
 		B824BAC024AE63AD00FB59DC = {
 			isa = PBXGroup;
 			children = (
@@ -48,7 +104,7 @@
 		B824BACA24AE63AD00FB59DC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B824BAC924AE63AD00FB59DC /* Nonogram Infinity.app */,
+				B824BAC924AE63AD00FB59DC /* Nonogram ∞.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -62,8 +118,7 @@
 				B845AC8924AE8A1D00DE204F /* Managers */,
 				B845AC8824AE892400DE204F /* Resources */,
 				B845AC9024AE920F00DE204F /* Scenes */,
-				B845AC8C24AE8EE000DE204F /* Storyboards */,
-				B845AC8F24AE91DF00DE204F /* ViewControllers */,
+				B845AC8C24AE8EE000DE204F /* Architecture */,
 			);
 			path = "Nonogram Infinity";
 			sourceTree = "<group>";
@@ -85,8 +140,10 @@
 		B845AC8824AE892400DE204F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B80650E824B3FF1D00A4F958 /* Audio */,
 				B824BADE24AE63B000FB59DC /* Info.plist */,
 				B824BAD924AE63B000FB59DC /* Assets.xcassets */,
+				B809DB7A24B40F3D007F58EF /* Constants.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -98,27 +155,23 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
-		B845AC8C24AE8EE000DE204F /* Storyboards */ = {
+		B845AC8C24AE8EE000DE204F /* Architecture */ = {
 			isa = PBXGroup;
 			children = (
+				B824BAD424AE63AD00FB59DC /* NonogramInfinityViewController.swift */,
 				B824BADB24AE63B000FB59DC /* LaunchScreen.storyboard */,
-				B824BAD624AE63AD00FB59DC /* Main.storyboard */,
+				B824BAD624AE63AD00FB59DC /* NonogramInfinity.storyboard */,
 			);
-			path = Storyboards;
-			sourceTree = "<group>";
-		};
-		B845AC8F24AE91DF00DE204F /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				B824BAD424AE63AD00FB59DC /* GameViewController.swift */,
-			);
-			path = ViewControllers;
+			path = Architecture;
 			sourceTree = "<group>";
 		};
 		B845AC9024AE920F00DE204F /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				B824BAD224AE63AD00FB59DC /* GameScene.swift */,
+				B809DB7524B40C0E007F58EF /* Game */,
+				B809DB7424B40C09007F58EF /* GameOver */,
+				B809DB7624B40C12007F58EF /* Settings */,
+				B809DB7724B40C17007F58EF /* TitleScreen */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -140,7 +193,7 @@
 			);
 			name = "Nonogram Infinity";
 			productName = "Nonogram Infinity";
-			productReference = B824BAC924AE63AD00FB59DC /* Nonogram Infinity.app */;
+			productReference = B824BAC924AE63AD00FB59DC /* Nonogram ∞.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -181,8 +234,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B824BAD824AE63AD00FB59DC /* Main.storyboard in Resources */,
+				B80650EA24B3FF3500A4F958 /* BGM.wav in Resources */,
+				B824BAD824AE63AD00FB59DC /* NonogramInfinity.storyboard in Resources */,
+				B809DB7924B40CAA007F58EF /* TitleScreenScene.sks in Resources */,
 				B824BADA24AE63B000FB59DC /* Assets.xcassets in Resources */,
+				B89F69A424B41D2D00472067 /* GameScene.sks in Resources */,
 				B824BADD24AE63B000FB59DC /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -195,7 +251,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B824BAD324AE63AD00FB59DC /* GameScene.swift in Sources */,
-				B824BAD524AE63AD00FB59DC /* GameViewController.swift in Sources */,
+				B80650EE24B4023A00A4F958 /* GameOverScreenScene.swift in Sources */,
+				B80650EC24B4022600A4F958 /* TitleScreenScene.swift in Sources */,
+				B80650F024B40A5800A4F958 /* SettingsScene.swift in Sources */,
+				B809DB7B24B40F3D007F58EF /* Constants.swift in Sources */,
+				B824BAD524AE63AD00FB59DC /* NonogramInfinityViewController.swift in Sources */,
 				B824BACD24AE63AD00FB59DC /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -203,12 +263,12 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		B824BAD624AE63AD00FB59DC /* Main.storyboard */ = {
+		B824BAD624AE63AD00FB59DC /* NonogramInfinity.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				B824BAD724AE63AD00FB59DC /* Base */,
 			);
-			name = Main.storyboard;
+			name = NonogramInfinity.storyboard;
 			sourceTree = "<group>";
 		};
 		B824BADB24AE63B000FB59DC /* LaunchScreen.storyboard */ = {
@@ -343,12 +403,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LNM9247SFR;
 				INFOPLIST_FILE = "Nonogram Infinity/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bdl.Nonogram-Infinity";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Nonogram ∞";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -361,12 +422,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LNM9247SFR;
 				INFOPLIST_FILE = "Nonogram Infinity/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bdl.Nonogram-Infinity";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Nonogram ∞";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
