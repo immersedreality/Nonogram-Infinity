@@ -27,10 +27,15 @@ struct GameOverScreenNodeNames {
     static let scoreLabel = "Score Value Label"
 }
 
+struct HowToPlayNodeNames {
+    static let gotItLabel = "Got It Label"
+}
+
 struct SceneNames {
     static let gameOverScreenScene = "GameOverScreenScene"
     static let gameSceneLeftHanded = "GameScene-LeftHanded"
     static let gameSceneRightHanded = "GameScene-RightHanded"
+    static let howToPlayScene = "HowToPlayScene"
     static let settingsScene = "SettingsScene"
     static let titleScreenScene = "TitleScreenScene"
 }
@@ -44,6 +49,7 @@ struct SettingsNodeNames {
 }
 
 struct TitleScreenNodeNames {
+    static let helpLabel = "Help Label"
     static let highScoreTitleLabel = "High Score Title Label"
     static let highScoreValueLabel = "High Score Value Label"
     static let openLabel = "Open Label"
@@ -54,4 +60,5 @@ struct UserDefaultKeys {
     static let allTimeHighScore = "all-time-high-score"
     static let musicDisabled = "music-disabled"
     static let playerHandedness = "player-handedness"
+    static let userHasClaimedTheyGotIt = "user-has-claimed-they-got-it"
 }

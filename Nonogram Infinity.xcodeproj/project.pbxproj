@@ -22,6 +22,8 @@
 		B80D3EA427B490960095D777 /* SettingsScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B80D3EA327B490960095D777 /* SettingsScene.sks */; };
 		B80D3EA627B491230095D777 /* PersistedSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80D3EA527B491230095D777 /* PersistedSettings.swift */; };
 		B80D3EA727B497420095D777 /* GameScene-LeftHanded.sks in Resources */ = {isa = PBXBuildFile; fileRef = B80D3EA027B4902A0095D777 /* GameScene-LeftHanded.sks */; };
+		B80D3EAA27B4D8E60095D777 /* HowToPlayScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B80D3EA927B4D8E20095D777 /* HowToPlayScene.sks */; };
+		B80D3EAC27B4D9010095D777 /* HowToPlayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80D3EAB27B4D9010095D777 /* HowToPlayScene.swift */; };
 		B824BACD24AE63AD00FB59DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B824BACC24AE63AD00FB59DC /* AppDelegate.swift */; };
 		B824BAD324AE63AD00FB59DC /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B824BAD224AE63AD00FB59DC /* GameScene.swift */; };
 		B824BAD524AE63AD00FB59DC /* NonogramInfinityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B824BAD424AE63AD00FB59DC /* NonogramInfinityViewController.swift */; };
@@ -47,6 +49,8 @@
 		B80D3EA027B4902A0095D777 /* GameScene-LeftHanded.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "GameScene-LeftHanded.sks"; sourceTree = "<group>"; };
 		B80D3EA327B490960095D777 /* SettingsScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SettingsScene.sks; sourceTree = "<group>"; };
 		B80D3EA527B491230095D777 /* PersistedSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistedSettings.swift; sourceTree = "<group>"; };
+		B80D3EA927B4D8E20095D777 /* HowToPlayScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = HowToPlayScene.sks; sourceTree = "<group>"; };
+		B80D3EAB27B4D9010095D777 /* HowToPlayScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPlayScene.swift; sourceTree = "<group>"; };
 		B824BAC924AE63AD00FB59DC /* Nonogram ∞.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Nonogram ∞.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B824BACC24AE63AD00FB59DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B824BAD224AE63AD00FB59DC /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -112,6 +116,15 @@
 				B809DB7824B40CAA007F58EF /* TitleScreenScene.sks */,
 			);
 			path = TitleScreen;
+			sourceTree = "<group>";
+		};
+		B80D3EA827B4D79E0095D777 /* HowToPlay */ = {
+			isa = PBXGroup;
+			children = (
+				B80D3EA927B4D8E20095D777 /* HowToPlayScene.sks */,
+				B80D3EAB27B4D9010095D777 /* HowToPlayScene.swift */,
+			);
+			path = HowToPlay;
 			sourceTree = "<group>";
 		};
 		B824BAC024AE63AD00FB59DC = {
@@ -195,6 +208,7 @@
 		B845AC9024AE920F00DE204F /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				B80D3EA827B4D79E0095D777 /* HowToPlay */,
 				B809DB7524B40C0E007F58EF /* Game */,
 				B809DB7424B40C09007F58EF /* GameOver */,
 				B809DB7624B40C12007F58EF /* Settings */,
@@ -262,6 +276,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B80D3E9F27B486220095D777 /* GameOverScreenScene.sks in Resources */,
+				B80D3EAA27B4D8E60095D777 /* HowToPlayScene.sks in Resources */,
 				B80650EA24B3FF3500A4F958 /* BGM.wav in Resources */,
 				B824BAD824AE63AD00FB59DC /* NonogramInfinity.storyboard in Resources */,
 				B809DB7924B40CAA007F58EF /* TitleScreenScene.sks in Resources */,
@@ -280,6 +295,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B80D3EAC27B4D9010095D777 /* HowToPlayScene.swift in Sources */,
 				B80D3E9727B454270095D777 /* Puzzle.swift in Sources */,
 				B824BAD324AE63AD00FB59DC /* GameScene.swift in Sources */,
 				B80D3EA627B491230095D777 /* PersistedSettings.swift in Sources */,

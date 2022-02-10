@@ -11,15 +11,23 @@ import GameplayKit
 
 class TitleScreenScene: SKScene {
 
+    var helpLabel = SKLabelNode()
     var openLabel = SKLabelNode()
     var settingsLabel = SKLabelNode()
     var highScoreTitleLabel = SKLabelNode()
     var highScoreValueLabel = SKLabelNode()
 
     override func sceneDidLoad() {
+        setUpHelpLabel()
         setUpOpenLabel()
         setUpSettingsLabel()
         setUpHighScoreLabels()
+    }
+
+    private func setUpHelpLabel() {
+        guard let helpLabel = self.childNode(withName: TitleScreenNodeNames.helpLabel) as? SKLabelNode else { return }
+        self.helpLabel = helpLabel
+        helpLabel.isHidden = !PersistedSettings.userHasClaimedTheyGotIt
     }
 
     private func setUpOpenLabel() {
@@ -55,16 +63,29 @@ class TitleScreenScene: SKScene {
         let touchLocation = touch.location(in: self)
         let touchedNode = nodes(at: touchLocation)
 
-        if touchedNode.contains(openLabel) {
+        if touchedNode.contains(helpLabel) {
+            handleHelpLabelTouch()
+        } else if touchedNode.contains(openLabel) {
             handleOpenLabelTouch()
         } else if touchedNode.contains(settingsLabel) {
             handleSettingsLabelTouch()
         }
     }
 
-    private func handleOpenLabelTouch() {
-        let transition = SKTransition.doorway(withDuration: 0.8)
+    private func handleHelpLabelTouch() {
+        let transition = SKTransition.push(with: .up, duration: 0.4)
+        guard let howToPlayScene = HowToPlayScene(fileNamed: SceneNames.howToPlayScene) else { return }
+        howToPlayScene.scaleMode = .aspectFill
+        scene?.view?.presentScene(howToPlayScene, transition: transition)
+    }
 
+    private func handleOpenLabelTouch() {
+        guard PersistedSettings.userHasClaimedTheyGotIt else {
+            handleHelpLabelTouch()
+            return
+        }
+
+        let transition = SKTransition.doorway(withDuration: 0.8)
         switch PersistedSettings.playerHandedness {
         case .left:
             guard let gameScene = GameScene(fileNamed: SceneNames.gameSceneLeftHanded) else { return }

@@ -10,6 +10,15 @@ import Foundation
 
 class PersistedSettings {
 
+    static var userHasClaimedTheyGotIt: Bool {
+        get {
+            UserDefaults.standard.bool(forKey: UserDefaultKeys.userHasClaimedTheyGotIt)
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: UserDefaultKeys.userHasClaimedTheyGotIt)
+        }
+    }
+
     static var allTimeHighScore: Int {
         get {
             UserDefaults.standard.integer(forKey: UserDefaultKeys.allTimeHighScore)
