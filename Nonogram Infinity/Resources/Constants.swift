@@ -15,6 +15,7 @@ struct ActionKeys {
 struct GameNodeNames {
     static let cell = "Cell-"
     static let columnLabel = "ColumnLabel-"
+    static let playArea = "Play Area"
     static let rowLabel = "RowLabel-"
     static let scoreLabel = "Score Value Label"
     static let timeLabel = "Time Value Label"

@@ -12,6 +12,7 @@ import Combine
 
 class GameScene: SKScene {
 
+    var playArea = SKSpriteNode()
     var scoreLabel = SKLabelNode()
     var timeLabel = SKLabelNode()
     var cells: [NonogramCell] = []
@@ -23,6 +24,7 @@ class GameScene: SKScene {
     private var cancellables: Set<AnyCancellable> = []
 
     override func sceneDidLoad() {
+        setUpPlayableArea()
         setUpScoreLabel()
         setUpTimeLabel()
         setUpPuzzleLabels()
@@ -32,6 +34,11 @@ class GameScene: SKScene {
     override func didMove(to view: SKView) {
         setUpTimer()
         setUpAudio()
+    }
+
+    private func setUpPlayableArea() {
+        guard let playArea = self.childNode(withName: GameNodeNames.playArea) as? SKSpriteNode else { return }
+        self.playArea = playArea
     }
 
     private func setUpScoreLabel() {
@@ -106,12 +113,12 @@ class GameScene: SKScene {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
         let touchLocation = touch.location(in: self)
-        let touchedNode = nodes(at: touchLocation)
+        let touchedNodes = nodes(at: touchLocation)
 
         for cell in cells {
             guard !cell.isPartOfCurrentTouch, !cell.isActivated else { continue }
 
-            if touchedNode.contains(cell.sprite) {
+            if touchedNodes.contains(cell.sprite) {
                 let touchWasCorrect = cell.checkIfCorrect()
                 if touchWasCorrect {
                     currentRun.currentTouchCellIndexes.append(cell.index)
@@ -127,15 +134,16 @@ class GameScene: SKScene {
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
         let touchLocation = touch.location(in: self)
-        let touchedNode = nodes(at: touchLocation)
+        let touchedNodes = nodes(at: touchLocation)
 
-        var touchMovedOutOfRange = true
+        guard touchedNodes.contains(playArea) else {
+            handleCompletedTouch()
+            return
+        }
 
         for cell in cells {
 
-            if touchedNode.contains(cell.sprite) {
-                touchMovedOutOfRange = false
-
+            if touchedNodes.contains(cell.sprite) {
                 guard !cell.isPartOfCurrentTouch, !cell.isActivated else { continue }
                 cell.isPartOfCurrentTouch = true
                 let touchWasCorrect = cell.checkIfCorrect()
@@ -152,10 +160,6 @@ class GameScene: SKScene {
                 }
                 cell.isPartOfCurrentTouch = true
             }
-        }
-
-        if touchMovedOutOfRange {
-            handleCompletedTouch()
         }
 
     }
