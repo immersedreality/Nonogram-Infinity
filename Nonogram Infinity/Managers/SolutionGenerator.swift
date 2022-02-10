@@ -32,8 +32,8 @@ class SolutionGenerator {
             }
         }
 
-        // 15 seems to work pretty well
-        while solutionCount < 15 {
+        // 16 seems to work pretty well
+        while solutionCount < 16 {
             let randomIndex = GKRandomSource.sharedRandom().nextInt(upperBound: falseIndexes.count)
             let indexToFlip = falseIndexes.remove(at: randomIndex)
             unformattedSolution[indexToFlip] = true
