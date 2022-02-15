@@ -17,6 +17,21 @@ class Run {
     var currentTouchCellIndexes: [Int] = []
     var currentTouchScore: Int = 0
 
+    var animatedEventsLabelCorrectText: String {
+        if currentTouchScore == 10 {
+            return String(currentTouchScore)
+        } else {
+            return String(currentTouchScore) + "x" + String(currentTouchCellIndexes.count)
+        }
+    }
+    let animatedEventsLabelMissText = "-5 SEC"
+    let animatedEventsLabelCompletedText = "+10 SEC"
+    var latestEvent: EventToAnimate = .correct
+
     @Published var totalScore: Int = 0
 
+}
+
+enum EventToAnimate {
+    case completed, correct, finishedAnimating, miss
 }

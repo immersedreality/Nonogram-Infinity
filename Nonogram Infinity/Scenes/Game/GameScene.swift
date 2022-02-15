@@ -15,6 +15,7 @@ class GameScene: SKScene {
     var playArea = SKSpriteNode()
     var scoreLabel = SKLabelNode()
     var timeLabel = SKLabelNode()
+    var animatedEventsLabel = SKLabelNode()
     var cells: [NonogramCell] = []
     var rowLabels: [SKLabelNode] = []
     var columnLabels: [SKLabelNode] = []
@@ -27,6 +28,7 @@ class GameScene: SKScene {
         setUpPlayableArea()
         setUpScoreLabel()
         setUpTimeLabel()
+        setUpAnimatedEventsLabel()
         setUpPuzzleLabels()
         setUpNonogramCells()
     }
@@ -65,6 +67,11 @@ class GameScene: SKScene {
                 }
             }
             .store(in: &cancellables)
+    }
+
+    private func setUpAnimatedEventsLabel() {
+        guard let animatedEventsLabel = self.childNode(withName: GameNodeNames.animatedEventsLabel) as? SKLabelNode else { return }
+        self.animatedEventsLabel = animatedEventsLabel
     }
 
     private func setUpPuzzleLabels() {
@@ -122,8 +129,10 @@ class GameScene: SKScene {
                 if touchWasCorrect {
                     currentRun.currentTouchCellIndexes.append(cell.index)
                     currentRun.currentTouchScore += 10
+                    setAnimatedEventsLabelText(for: .correct)
                 } else {
                     currentRun.gameTimer.secondsRemaining -= 5
+                    setAnimatedEventsLabelText(for: .miss)
                 }
                 cell.isPartOfCurrentTouch = true
             }
@@ -149,6 +158,7 @@ class GameScene: SKScene {
                 if touchWasCorrect {
                     currentRun.currentTouchCellIndexes.append(cell.index)
                     currentRun.currentTouchScore += 10
+                    setAnimatedEventsLabelText(for: .correct)
                 } else {
                     for index in currentRun.currentTouchCellIndexes {
                         cells[index].resetCell(isCorrect: cells[index].isCorrect)
@@ -156,6 +166,7 @@ class GameScene: SKScene {
                     currentRun.currentTouchCellIndexes.removeAll()
                     currentRun.currentTouchScore = 0
                     currentRun.gameTimer.secondsRemaining -= 5
+                    setAnimatedEventsLabelText(for: .miss)
                 }
                 cell.isPartOfCurrentTouch = true
             }
@@ -164,11 +175,15 @@ class GameScene: SKScene {
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        AudioManager.resetHitPitch()
         handleCompletedTouch()
     }
 
     private func handleCompletedTouch() {
+        guard currentRun.latestEvent != .finishedAnimating else { return }
+
+        AudioManager.resetHitPitch()
+        animateAwayAnimatedEventsLabel()
+
         cells.forEach { $0.isPartOfCurrentTouch = false }
 
         let scoreToAdd = (currentRun.currentTouchScore * currentRun.currentTouchCellIndexes.count)
@@ -185,21 +200,23 @@ class GameScene: SKScene {
         currentRun.currentTouchCellIndexes.removeAll()
         currentRun.currentTouchScore = 0
         checkForPuzzleCompletion()
+
+        currentRun.latestEvent = .finishedAnimating
     }
 
     private func resetNonogramCells() {
-
         for index in 1...25 {
             let currentCell = cells[index - 1]
             currentCell.resetCell(isCorrect: currentRun.currentPuzzle.solution[currentCell.row - 1][currentCell.column - 1])
         }
-
     }
 
     private func checkForPuzzleCompletion() {
         let numberOfCellsFilled = cells.filter { $0.isActivated == true }.count
         if numberOfCellsFilled == currentRun.currentPuzzle.totalCorrectCount {
             AudioManager.play(soundEffect: .complete)
+            setAnimatedEventsLabelText(for: .completed)
+            animateAwayAnimatedEventsLabel()
             currentRun.gameTimer.secondsRemaining += 10
             currentRun.currentPuzzle = Puzzle()
             setUpPuzzleLabels()
@@ -216,7 +233,55 @@ class GameScene: SKScene {
         scene?.view?.presentScene(gameOverScreenScene, transition: transition)
     }
 
-    override func update(_ currentTime: TimeInterval) {
+    private func setAnimatedEventsLabelText(for event: EventToAnimate) {
+        switch event {
+        case .completed:
+            animatedEventsLabel.text = currentRun.animatedEventsLabelCompletedText
+        case .correct:
+            animatedEventsLabel.text = currentRun.animatedEventsLabelCorrectText
+        case .finishedAnimating:
+            return
+        case .miss:
+            animatedEventsLabel.text = currentRun.animatedEventsLabelMissText
+        }
+        animatedEventsLabel.removeAllActions()
+        animatedEventsLabel.position = CGPoint(x: 0, y: 150)
+        animatedEventsLabel.setScale(1.0)
+        animatedEventsLabel.alpha = 1.0
+        currentRun.latestEvent = event
+    }
+
+    private func animateAwayAnimatedEventsLabel() {
+        switch currentRun.latestEvent {
+        case .completed:
+            animatedEventsLabel.removeAllActions()
+            animatedEventsLabel.position = CGPoint(x: 0, y: 150)
+            animatedEventsLabel.setScale(1.0)
+            animatedEventsLabel.alpha = 1.0
+
+            let actionGroup = SKAction.group([
+                SKAction.scale(by: 0.1, duration: 0.2),
+                SKAction.move(to: timeLabel.position, duration: 0.2),
+                SKAction.fadeOut(withDuration: 0.2)
+            ])
+
+            let actionSequence = SKAction.sequence([
+                SKAction.wait(forDuration: 0.5),
+                actionGroup
+            ])
+
+            animatedEventsLabel.run(actionSequence)
+        case .correct:
+            animatedEventsLabel.run(SKAction.scale(by: 0.1, duration: 0.2))
+            animatedEventsLabel.run(SKAction.move(to: scoreLabel.position, duration: 0.2))
+            animatedEventsLabel.run(SKAction.fadeOut(withDuration: 0.2))
+        case .finishedAnimating:
+            return
+        case .miss:
+            animatedEventsLabel.run(SKAction.scale(by: 0.1, duration: 0.2))
+            animatedEventsLabel.run(SKAction.move(to: timeLabel.position, duration: 0.2))
+            animatedEventsLabel.run(SKAction.fadeOut(withDuration: 0.2))
+        }
     }
 
 }

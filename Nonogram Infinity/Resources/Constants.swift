@@ -22,6 +22,7 @@ struct CreditsNodeNames {
 }
 
 struct GameNodeNames {
+    static let animatedEventsLabel = "Animated Events Label"
     static let cell = "Cell-"
     static let columnLabel = "ColumnLabel-"
     static let playArea = "Play Area"
