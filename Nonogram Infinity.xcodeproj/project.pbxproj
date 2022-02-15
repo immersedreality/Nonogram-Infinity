@@ -30,6 +30,8 @@
 		B80D3EB627BB5BAF0095D777 /* Hit.wav in Resources */ = {isa = PBXBuildFile; fileRef = B80D3EB227BB5BAF0095D777 /* Hit.wav */; };
 		B80D3EB827BB5CB30095D777 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80D3EB727BB5CB30095D777 /* AudioManager.swift */; };
 		B80D3EBA27BB71A30095D777 /* Score.wav in Resources */ = {isa = PBXBuildFile; fileRef = B80D3EB927BB71A30095D777 /* Score.wav */; };
+		B80D3EBD27BC1FA10095D777 /* CreditsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80D3EBC27BC1FA10095D777 /* CreditsScene.swift */; };
+		B80D3EBF27BC1FD30095D777 /* CreditsScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B80D3EBE27BC1FD30095D777 /* CreditsScene.sks */; };
 		B824BACD24AE63AD00FB59DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B824BACC24AE63AD00FB59DC /* AppDelegate.swift */; };
 		B824BAD324AE63AD00FB59DC /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B824BAD224AE63AD00FB59DC /* GameScene.swift */; };
 		B824BAD524AE63AD00FB59DC /* NonogramInfinityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B824BAD424AE63AD00FB59DC /* NonogramInfinityViewController.swift */; };
@@ -62,7 +64,9 @@
 		B80D3EB027BB5BAF0095D777 /* Complete.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Complete.wav; sourceTree = "<group>"; };
 		B80D3EB227BB5BAF0095D777 /* Hit.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Hit.wav; sourceTree = "<group>"; };
 		B80D3EB727BB5CB30095D777 /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
-		B80D3EB927BB71A30095D777 /* Score.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Score.wav; path = ../../../../../Downloads/Score.wav; sourceTree = "<group>"; };
+		B80D3EB927BB71A30095D777 /* Score.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Score.wav; sourceTree = "<group>"; };
+		B80D3EBC27BC1FA10095D777 /* CreditsScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsScene.swift; sourceTree = "<group>"; };
+		B80D3EBE27BC1FD30095D777 /* CreditsScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CreditsScene.sks; sourceTree = "<group>"; };
 		B824BAC924AE63AD00FB59DC /* Nonogram ∞.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Nonogram ∞.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B824BACC24AE63AD00FB59DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B824BAD224AE63AD00FB59DC /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -143,6 +147,15 @@
 			path = HowToPlay;
 			sourceTree = "<group>";
 		};
+		B80D3EBB27BC1F850095D777 /* Credits */ = {
+			isa = PBXGroup;
+			children = (
+				B80D3EBC27BC1FA10095D777 /* CreditsScene.swift */,
+				B80D3EBE27BC1FD30095D777 /* CreditsScene.sks */,
+			);
+			path = Credits;
+			sourceTree = "<group>";
+		};
 		B824BAC024AE63AD00FB59DC = {
 			isa = PBXGroup;
 			children = (
@@ -179,7 +192,6 @@
 				B80D3E9427B44A540095D777 /* NonogramCell.swift */,
 				B80D3E9627B454270095D777 /* Puzzle.swift */,
 				B80D3E9A27B457080095D777 /* Run.swift */,
-				B80D3EA527B491230095D777 /* PersistedSettings.swift */,
 			);
 			path = Entitites;
 			sourceTree = "<group>";
@@ -198,6 +210,7 @@
 		B845AC8924AE8A1D00DE204F /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				B80D3EA527B491230095D777 /* PersistedSettings.swift */,
 				B80D3E9827B454460095D777 /* SolutionGenerator.swift */,
 				B80D3EAD27BB2FC50095D777 /* HapticsManager.swift */,
 				B80D3EB727BB5CB30095D777 /* AudioManager.swift */,
@@ -218,6 +231,7 @@
 		B845AC9024AE920F00DE204F /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				B80D3EBB27BC1F850095D777 /* Credits */,
 				B80D3EA827B4D79E0095D777 /* HowToPlay */,
 				B809DB7524B40C0E007F58EF /* Game */,
 				B809DB7424B40C09007F58EF /* GameOver */,
@@ -294,6 +308,7 @@
 				B80D3EBA27BB71A30095D777 /* Score.wav in Resources */,
 				B80D3EB327BB5BAF0095D777 /* Miss.wav in Resources */,
 				B809DB7924B40CAA007F58EF /* TitleScreenScene.sks in Resources */,
+				B80D3EBF27BC1FD30095D777 /* CreditsScene.sks in Resources */,
 				B824BADA24AE63B000FB59DC /* Assets.xcassets in Resources */,
 				B89F69A424B41D2D00472067 /* GameScene-RightHanded.sks in Resources */,
 				B80D3EA727B497420095D777 /* GameScene-LeftHanded.sks in Resources */,
@@ -318,6 +333,7 @@
 				B80650EC24B4022600A4F958 /* TitleScreenScene.swift in Sources */,
 				B80650F024B40A5800A4F958 /* SettingsScene.swift in Sources */,
 				B80D3E9D27B46F5F0095D777 /* GameTimer.swift in Sources */,
+				B80D3EBD27BC1FA10095D777 /* CreditsScene.swift in Sources */,
 				B809DB7B24B40F3D007F58EF /* Constants.swift in Sources */,
 				B80D3EB827BB5CB30095D777 /* AudioManager.swift in Sources */,
 				B80D3E9927B454460095D777 /* SolutionGenerator.swift in Sources */,

@@ -14,6 +14,7 @@ class TitleScreenScene: SKScene {
     var helpLabel = SKLabelNode()
     var openLabel = SKLabelNode()
     var settingsLabel = SKLabelNode()
+    var creditsLabel = SKLabelNode()
     var highScoreTitleLabel = SKLabelNode()
     var highScoreValueLabel = SKLabelNode()
 
@@ -21,6 +22,7 @@ class TitleScreenScene: SKScene {
         setUpHelpLabel()
         setUpOpenLabel()
         setUpSettingsLabel()
+        setUpCreditsLabel()
         setUpHighScoreLabels()
     }
 
@@ -38,6 +40,11 @@ class TitleScreenScene: SKScene {
     private func setUpSettingsLabel() {
         guard let settingsLabel = self.childNode(withName: TitleScreenNodeNames.settingsLabel) as? SKLabelNode else { return }
         self.settingsLabel = settingsLabel
+    }
+
+    private func setUpCreditsLabel() {
+        guard let creditsLabel = self.childNode(withName: TitleScreenNodeNames.creditsLabel) as? SKLabelNode else { return }
+        self.creditsLabel = creditsLabel
     }
 
     private func setUpHighScoreLabels() {
@@ -69,6 +76,8 @@ class TitleScreenScene: SKScene {
             handleOpenLabelTouch()
         } else if touchedNode.contains(settingsLabel) {
             handleSettingsLabelTouch()
+        } else if touchedNode.contains(creditsLabel) {
+            handleCreditsLabelTouch()
         }
     }
 
@@ -104,6 +113,13 @@ class TitleScreenScene: SKScene {
         guard let settingsScene = SettingsScene(fileNamed: SceneNames.settingsScene) else { return }
         settingsScene.scaleMode = .aspectFill
         scene?.view?.presentScene(settingsScene, transition: transition)
+    }
+
+    private func handleCreditsLabelTouch() {
+        let transition = SKTransition.doorsOpenHorizontal(withDuration: 0.4)
+        guard let creditsScene = CreditsScene(fileNamed: SceneNames.creditsScene) else { return }
+        creditsScene.scaleMode = .aspectFill
+        scene?.view?.presentScene(creditsScene, transition: transition)
     }
 
 }

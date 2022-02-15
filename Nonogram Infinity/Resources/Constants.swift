@@ -12,6 +12,15 @@ struct ActionKeys {
     static let timer = "Timer"
 }
 
+struct CreditsNodeNames {
+    static let backLabel = "Back Label"
+    static let bozoDesignLabsLabel = "Bozo Design Labs Label"
+    static let eightBitEscapadesLabel = "8-Bit Escapades Label"
+    static let kingGizzardLabel = "King Gizzard Label"
+    static let littleRobotLabel = "Little Robot Label"
+    static let meLabel = "Me Label"
+}
+
 struct GameNodeNames {
     static let cell = "Cell-"
     static let columnLabel = "ColumnLabel-"
@@ -32,6 +41,7 @@ struct HowToPlayNodeNames {
 }
 
 struct SceneNames {
+    static let creditsScene = "CreditsScene"
     static let gameOverScreenScene = "GameOverScreenScene"
     static let gameSceneLeftHanded = "GameScene-LeftHanded"
     static let gameSceneRightHanded = "GameScene-RightHanded"
@@ -49,6 +59,7 @@ struct SettingsNodeNames {
 }
 
 struct TitleScreenNodeNames {
+    static let creditsLabel = "Credits Label"
     static let helpLabel = "Help Label"
     static let highScoreTitleLabel = "High Score Title Label"
     static let highScoreValueLabel = "High Score Value Label"
