@@ -67,11 +67,11 @@ class GameOverScreenScene: SKScene {
         switch PersistedSettings.playerHandedness {
         case .left:
             guard let gameScene = GameScene(fileNamed: SceneNames.gameSceneLeftHanded) else { return }
-            gameScene.scaleMode = .aspectFill
+            gameScene.scaleMode = .aspectFit
             scene?.view?.presentScene(gameScene, transition: transition)
         case .right:
             guard let gameScene = GameScene(fileNamed: SceneNames.gameSceneRightHanded) else { return }
-            gameScene.scaleMode = .aspectFill
+            gameScene.scaleMode = .aspectFit
             scene?.view?.presentScene(gameScene, transition: transition)
         }
     }
@@ -79,7 +79,7 @@ class GameOverScreenScene: SKScene {
     private func handleQuitLabelTouch() {
         let transition = SKTransition.doorsCloseHorizontal(withDuration: 0.4)
         guard let titleScreenScene = TitleScreenScene(fileNamed: SceneNames.titleScreenScene) else { return }
-        titleScreenScene.scaleMode = .aspectFill
+        titleScreenScene.scaleMode = .aspectFit
         scene?.view?.presentScene(titleScreenScene, transition: transition)
     }
 

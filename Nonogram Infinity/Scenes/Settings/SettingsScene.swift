@@ -90,7 +90,7 @@ class SettingsScene: SKScene {
     private func handleBackLabelTouch() {
         let transition = SKTransition.doorsCloseHorizontal(withDuration: 0.4)
         guard let titleScreenScene = TitleScreenScene(fileNamed: SceneNames.titleScreenScene) else { return }
-        titleScreenScene.scaleMode = .aspectFill
+        titleScreenScene.scaleMode = .aspectFit
         scene?.view?.presentScene(titleScreenScene, transition: transition)
     }
 

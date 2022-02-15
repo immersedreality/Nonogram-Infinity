@@ -84,7 +84,7 @@ class TitleScreenScene: SKScene {
     private func handleHelpLabelTouch() {
         let transition = SKTransition.push(with: .up, duration: 0.4)
         guard let howToPlayScene = HowToPlayScene(fileNamed: SceneNames.howToPlayScene) else { return }
-        howToPlayScene.scaleMode = .aspectFill
+        howToPlayScene.scaleMode = .aspectFit
         scene?.view?.presentScene(howToPlayScene, transition: transition)
     }
 
@@ -98,11 +98,11 @@ class TitleScreenScene: SKScene {
         switch PersistedSettings.playerHandedness {
         case .left:
             guard let gameScene = GameScene(fileNamed: SceneNames.gameSceneLeftHanded) else { return }
-            gameScene.scaleMode = .aspectFill
+            gameScene.scaleMode = .aspectFit
             scene?.view?.presentScene(gameScene, transition: transition)
         case .right:
             guard let gameScene = GameScene(fileNamed: SceneNames.gameSceneRightHanded) else { return }
-            gameScene.scaleMode = .aspectFill
+            gameScene.scaleMode = .aspectFit
             scene?.view?.presentScene(gameScene, transition: transition)
         }
 
@@ -111,14 +111,14 @@ class TitleScreenScene: SKScene {
     private func handleSettingsLabelTouch() {
         let transition = SKTransition.doorsOpenHorizontal(withDuration: 0.4)
         guard let settingsScene = SettingsScene(fileNamed: SceneNames.settingsScene) else { return }
-        settingsScene.scaleMode = .aspectFill
+        settingsScene.scaleMode = .aspectFit
         scene?.view?.presentScene(settingsScene, transition: transition)
     }
 
     private func handleCreditsLabelTouch() {
         let transition = SKTransition.doorsOpenHorizontal(withDuration: 0.4)
         guard let creditsScene = CreditsScene(fileNamed: SceneNames.creditsScene) else { return }
-        creditsScene.scaleMode = .aspectFill
+        creditsScene.scaleMode = .aspectFit
         scene?.view?.presentScene(creditsScene, transition: transition)
     }
 

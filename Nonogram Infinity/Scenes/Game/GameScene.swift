@@ -228,7 +228,7 @@ class GameScene: SKScene {
         AudioManager.stopBackgroundMusic()
         let transition = SKTransition.doorsCloseVertical(withDuration: 0.4)
         guard let gameOverScreenScene = GameOverScreenScene(fileNamed: SceneNames.gameOverScreenScene) else { return }
-        gameOverScreenScene.scaleMode = .aspectFill
+        gameOverScreenScene.scaleMode = .aspectFit
         gameOverScreenScene.finishedRun = currentRun
         scene?.view?.presentScene(gameOverScreenScene, transition: transition)
     }

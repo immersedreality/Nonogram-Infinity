@@ -20,7 +20,7 @@ class NonogramInfinityViewController: UIViewController {
     private func setUpTitleScreenScene() {
         guard let view = self.view as? SKView else { return }
         if let titleScreenScene = TitleScreenScene(fileNamed: SceneNames.titleScreenScene) {
-            titleScreenScene.scaleMode = .aspectFill
+            titleScreenScene.scaleMode = .aspectFit
             view.presentScene(titleScreenScene)
         }
     }
