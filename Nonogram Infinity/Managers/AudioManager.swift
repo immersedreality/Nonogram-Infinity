@@ -60,6 +60,7 @@ class AudioManager {
 
     class func startBackgroundMusic() {
         bgmPlayer.currentTime = 0
+        bgmPlayer.numberOfLoops = -1
         bgmPlayer.play()
     }
 
