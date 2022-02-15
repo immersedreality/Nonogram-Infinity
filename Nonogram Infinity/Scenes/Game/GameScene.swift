@@ -105,8 +105,7 @@ class GameScene: SKScene {
 
     private func setUpAudio() {
         if !PersistedSettings.musicDisabled {
-            let backgroundSound = SKAudioNode(fileNamed: "BGM.wav")
-            self.addChild(backgroundSound)
+            AudioManager.startBackgroundMusic()
         }
     }
 
@@ -165,12 +164,24 @@ class GameScene: SKScene {
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        AudioManager.resetHitPitch()
         handleCompletedTouch()
     }
 
     private func handleCompletedTouch() {
         cells.forEach { $0.isPartOfCurrentTouch = false }
-        currentRun.totalScore += (currentRun.currentTouchScore * currentRun.currentTouchCellIndexes.count)
+
+        let scoreToAdd = (currentRun.currentTouchScore * currentRun.currentTouchCellIndexes.count)
+
+        if scoreToAdd > 0 {
+            currentRun.totalScore += scoreToAdd
+        }
+
+        if scoreToAdd > 10 {
+            HapticsManager.playScoreEvent()
+            AudioManager.play(soundEffect: .score)
+        }
+        
         currentRun.currentTouchCellIndexes.removeAll()
         currentRun.currentTouchScore = 0
         checkForPuzzleCompletion()
@@ -188,6 +199,7 @@ class GameScene: SKScene {
     private func checkForPuzzleCompletion() {
         let numberOfCellsFilled = cells.filter { $0.isActivated == true }.count
         if numberOfCellsFilled == currentRun.currentPuzzle.totalCorrectCount {
+            AudioManager.play(soundEffect: .complete)
             currentRun.gameTimer.secondsRemaining += 10
             currentRun.currentPuzzle = Puzzle()
             setUpPuzzleLabels()
@@ -196,6 +208,7 @@ class GameScene: SKScene {
     }
 
     private func transitionToGameOverScreen() {
+        AudioManager.stopBackgroundMusic()
         let transition = SKTransition.doorsCloseVertical(withDuration: 0.4)
         guard let gameOverScreenScene = GameOverScreenScene(fileNamed: SceneNames.gameOverScreenScene) else { return }
         gameOverScreenScene.scaleMode = .aspectFill

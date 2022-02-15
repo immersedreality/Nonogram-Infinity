@@ -36,8 +36,13 @@ class NonogramCell {
 
     func checkIfCorrect() -> Bool {
         if !isActivated && isCorrect {
+            HapticsManager.playTapEvent()
+            AudioManager.play(soundEffect: .hit)
             sprite.color = .red
             isActivated = true
+        } else if !isCorrect {
+            HapticsManager.playMissEvent()
+            AudioManager.play(soundEffect: .miss)
         }
         return isCorrect
     }
