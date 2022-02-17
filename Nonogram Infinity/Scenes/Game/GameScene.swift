@@ -214,6 +214,7 @@ class GameScene: SKScene {
     private func checkForPuzzleCompletion() {
         let numberOfCellsFilled = cells.filter { $0.isActivated == true }.count
         if numberOfCellsFilled == currentRun.currentPuzzle.totalCorrectCount {
+            HapticsManager.playCompleteEvent()
             AudioManager.play(soundEffect: .complete)
             setAnimatedEventsLabelText(for: .completed)
             animateAwayAnimatedEventsLabel()

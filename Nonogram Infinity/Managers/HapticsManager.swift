@@ -35,6 +35,16 @@ class HapticsManager {
         duration: 0.3
     )
 
+    static let completeEvent = CHHapticEvent(
+        eventType: .hapticContinuous,
+        parameters: [
+            CHHapticEventParameter(parameterID: .hapticIntensity, value: 1.0),
+            CHHapticEventParameter(parameterID: .hapticSharpness, value: 0.5)
+        ],
+        relativeTime: 0,
+        duration: 0.5
+    )
+
     class func playTapEvent() {
         impactGenerator.impactOccurred(intensity: 1.0)
     }
@@ -51,6 +61,15 @@ class HapticsManager {
     class func playMissEvent() {
         try? hapticEngine?.start()
         let player = try? hapticEngine?.makePlayer(with: CHHapticPattern(events: [missEvent], parameters: []))
+        try? player?.start(atTime: CHHapticTimeImmediate)
+        hapticEngine?.notifyWhenPlayersFinished { _ in
+            return .stopEngine
+        }
+    }
+
+    class func playCompleteEvent() {
+        try? hapticEngine?.start()
+        let player = try? hapticEngine?.makePlayer(with: CHHapticPattern(events: [completeEvent], parameters: []))
         try? player?.start(atTime: CHHapticTimeImmediate)
         hapticEngine?.notifyWhenPlayersFinished { _ in
             return .stopEngine
