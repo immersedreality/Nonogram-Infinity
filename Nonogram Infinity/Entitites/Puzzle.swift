@@ -11,6 +11,25 @@ import Foundation
 class Puzzle {
 
     let solution: [[Bool]]
+    let columnOneSolution: [Bool]
+    let columnTwoSolution: [Bool]
+    let columnThreeSolution: [Bool]
+    let columnFourSolution: [Bool]
+    let columnFiveSolution: [Bool]
+
+    var rowCorrectCounts: [Int] {
+        return solution.map { $0.filter { $0 == true }.count }
+    }
+
+    var columnCorrectCounts: [Int] {
+        return [
+            columnOneSolution,
+            columnTwoSolution,
+            columnThreeSolution,
+            columnFourSolution,
+            columnFiveSolution
+        ].map { $0.filter { $0 == true }.count }
+    }
 
     var totalCorrectCount: Int {
         get {
@@ -21,6 +40,11 @@ class Puzzle {
 
     init() {
         self.solution = SolutionGenerator.generateSolution()
+        self.columnOneSolution = solution.map { $0[0] }
+        self.columnTwoSolution = solution.map { $0[1] }
+        self.columnThreeSolution = solution.map { $0[2] }
+        self.columnFourSolution = solution.map { $0[3] }
+        self.columnFiveSolution = solution.map { $0[4] }
     }
 
     func generateRowLabelText() -> [String] {
@@ -37,12 +61,6 @@ class Puzzle {
     func generateColumnLabelText() -> [String] {
 
         var columnLabelText: [String] = []
-
-        let columnOneSolution = solution.map { $0[0] }
-        let columnTwoSolution = solution.map { $0[1] }
-        let columnThreeSolution = solution.map { $0[2] }
-        let columnFourSolution = solution.map { $0[3] }
-        let columnFiveSolution = solution.map { $0[4] }
 
         columnLabelText.append(SolutionGenerator.generatePuzzleLabelText(for: columnOneSolution, rowOrColumn: .column))
         columnLabelText.append(SolutionGenerator.generatePuzzleLabelText(for: columnTwoSolution, rowOrColumn: .column))

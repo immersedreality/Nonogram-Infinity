@@ -81,9 +81,12 @@ class GameScene: SKScene {
 
         for index in 1...5 {
             guard let rowLabel = self.childNode(withName: GameNodeNames.rowLabel + String(index)) as? SKLabelNode else { return }
-            guard let columnLabel = self.childNode(withName: GameNodeNames.columnLabel + String(index)) as? SKLabelNode else { return }
             rowLabel.text = rowLabelText[index - 1]
+            rowLabels.append(rowLabel)
+
+            guard let columnLabel = self.childNode(withName: GameNodeNames.columnLabel + String(index)) as? SKLabelNode else { return }
             columnLabel.text = columnLabelText[index - 1]
+            columnLabels.append(columnLabel)
         }
 
     }
@@ -184,11 +187,10 @@ class GameScene: SKScene {
         AudioManager.resetHitPitch()
         animateAwayAnimatedEventsLabel()
 
-        cells.forEach { $0.isPartOfCurrentTouch = false }
-
         let scoreToAdd = (currentRun.currentTouchScore * currentRun.currentTouchCellIndexes.count)
 
         if scoreToAdd > 0 {
+            checkForCompletedRowsAndColumns()
             currentRun.totalScore += scoreToAdd
         }
 
@@ -196,12 +198,41 @@ class GameScene: SKScene {
             HapticsManager.playScoreEvent()
             AudioManager.play(soundEffect: .score)
         }
-        
+
+        cells.forEach { $0.isPartOfCurrentTouch = false }
         currentRun.currentTouchCellIndexes.removeAll()
         currentRun.currentTouchScore = 0
         checkForPuzzleCompletion()
 
         currentRun.latestEvent = .finishedAnimating
+    }
+
+    private func checkForCompletedRowsAndColumns() {
+        let rowCorrectCounts = currentRun.currentPuzzle.rowCorrectCounts
+        let columnCorrectCounts = currentRun.currentPuzzle.columnCorrectCounts
+
+        for index in 1...5 {
+            let numberOfCellsFilledInRow = cells.filter { $0.row == index && $0.isActivated == true }.count
+            let numberOfCellsFilledInColumn = cells.filter { $0.column == index && $0.isActivated == true }.count
+
+            if rowCorrectCounts[index - 1] == numberOfCellsFilledInRow {
+                rowLabels[index - 1].alpha = 0.3
+            }
+
+            if columnCorrectCounts[index - 1] == numberOfCellsFilledInColumn {
+                columnLabels[index - 1].alpha = 0.3
+            }
+        }
+
+    }
+
+    private func resetRowLabels() {
+        rowLabels.forEach { label in
+            label.alpha = 1.0
+        }
+        columnLabels.forEach { label in
+            label.alpha = 1.0
+        }
     }
 
     private func resetNonogramCells() {
@@ -221,6 +252,7 @@ class GameScene: SKScene {
             currentRun.gameTimer.secondsRemaining += 10
             currentRun.currentPuzzle = Puzzle()
             setUpPuzzleLabels()
+            resetRowLabels()
             resetNonogramCells()
         }
     }
@@ -273,15 +305,33 @@ class GameScene: SKScene {
 
             animatedEventsLabel.run(actionSequence)
         case .correct:
-            animatedEventsLabel.run(SKAction.scale(by: 0.1, duration: 0.2))
-            animatedEventsLabel.run(SKAction.move(to: scoreLabel.position, duration: 0.2))
-            animatedEventsLabel.run(SKAction.fadeOut(withDuration: 0.2))
+            let actionGroup = SKAction.group([
+                SKAction.scale(by: 0.1, duration: 0.2),
+                SKAction.move(to: scoreLabel.position, duration: 0.2),
+                SKAction.fadeOut(withDuration: 0.2)
+            ])
+
+            let actionSequence = SKAction.sequence([
+                SKAction.wait(forDuration: 0.1),
+                actionGroup
+            ])
+
+            animatedEventsLabel.run(actionSequence)
         case .finishedAnimating:
             return
         case .miss:
-            animatedEventsLabel.run(SKAction.scale(by: 0.1, duration: 0.2))
-            animatedEventsLabel.run(SKAction.move(to: timeLabel.position, duration: 0.2))
-            animatedEventsLabel.run(SKAction.fadeOut(withDuration: 0.2))
+            let actionGroup = SKAction.group([
+                SKAction.scale(by: 0.1, duration: 0.2),
+                SKAction.move(to: timeLabel.position, duration: 0.2),
+                SKAction.fadeOut(withDuration: 0.2)
+            ])
+
+            let actionSequence = SKAction.sequence([
+                SKAction.wait(forDuration: 0.1),
+                actionGroup
+            ])
+
+            animatedEventsLabel.run(actionSequence)
         }
     }
 
