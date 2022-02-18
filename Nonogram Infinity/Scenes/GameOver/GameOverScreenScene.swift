@@ -42,6 +42,12 @@ class GameOverScreenScene: SKScene {
     private func setUpScoreLabel() {
         guard let scoreLabel = self.childNode(withName: GameOverScreenNodeNames.scoreLabel) as? SKLabelNode else { return }
         self.scoreLabel = scoreLabel
+
+        guard !finishedRun.userAttemptedToCheat else {
+            scoreLabel.text = "NICE TRY!"
+            return
+        }
+
         scoreLabel.text = String(finishedRun.totalScore)
     }
 

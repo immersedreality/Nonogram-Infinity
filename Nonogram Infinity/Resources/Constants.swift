@@ -61,6 +61,10 @@ struct SettingsNodeNames {
     static let musicValueLabel = "Music Value Label"
 }
 
+struct StoryboardNames {
+    static let launchScreen = "LaunchScreen"
+}
+
 struct TitleScreenNodeNames {
     static let creditsLabel = "Credits Label"
     static let helpLabel = "Help Label"

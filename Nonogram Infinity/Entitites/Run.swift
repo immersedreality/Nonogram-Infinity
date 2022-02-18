@@ -16,6 +16,7 @@ class Run {
 
     var currentTouchCellIndexes: [Int] = []
     var currentTouchScore: Int = 0
+    @Published var totalScore: Int = 0
 
     var animatedEventsLabelCorrectText: String {
         if currentTouchScore == 10 {
@@ -28,8 +29,7 @@ class Run {
     let animatedEventsLabelCompletedText = "+10 SEC"
     var latestEvent: EventToAnimate = .correct
 
-    @Published var totalScore: Int = 0
-
+    var userAttemptedToCheat = false
 }
 
 enum EventToAnimate {

@@ -38,8 +38,12 @@ class GameScene: SKScene {
     override func didMove(to view: SKView) {
         setUpTimer()
         setUpAudio()
+        setUpAntiCheat()
     }
 
+    override func willMove(from view: SKView) {
+        removeAntiCheat()
+    }
 
     // MARK: Configuration
     private func setUpPlayableArea() {
@@ -121,6 +125,14 @@ class GameScene: SKScene {
         if !PersistedSettings.musicDisabled {
             AudioManager.startBackgroundMusic()
         }
+    }
+
+    func setUpAntiCheat() {
+        NotificationCenter.default.addObserver(self, selector: #selector(preventCheatAttempt), name: UIApplication.userDidTakeScreenshotNotification, object: nil)
+    }
+
+    func removeAntiCheat() {
+        NotificationCenter.default.removeObserver(self, name: UIApplication.userDidTakeScreenshotNotification, object: nil)
     }
 
     // MARK: Touch Handling
@@ -330,6 +342,12 @@ class GameScene: SKScene {
 
             animatedEventsLabel.run(actionSequence)
         }
+    }
+
+    @objc private func preventCheatAttempt() {
+        currentRun.totalScore = 0
+        currentRun.userAttemptedToCheat = true
+        transitionToGameOverScreen()
     }
 
     // MARK: Navigation
