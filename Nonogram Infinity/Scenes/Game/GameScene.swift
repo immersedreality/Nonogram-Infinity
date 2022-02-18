@@ -12,6 +12,7 @@ import Combine
 
 class GameScene: SKScene {
 
+    // MARK: Properties
     var playArea = SKSpriteNode()
     var scoreLabel = SKLabelNode()
     var timeLabel = SKLabelNode()
@@ -24,6 +25,7 @@ class GameScene: SKScene {
 
     private var cancellables: Set<AnyCancellable> = []
 
+    // MARK: Lifecycle
     override func sceneDidLoad() {
         setUpPlayableArea()
         setUpScoreLabel()
@@ -38,6 +40,8 @@ class GameScene: SKScene {
         setUpAudio()
     }
 
+
+    // MARK: Configuration
     private func setUpPlayableArea() {
         guard let playArea = self.childNode(withName: GameNodeNames.playArea) as? SKSpriteNode else { return }
         self.playArea = playArea
@@ -119,6 +123,7 @@ class GameScene: SKScene {
         }
     }
 
+    // MARK: Touch Handling
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
         let touchLocation = touch.location(in: self)
@@ -207,6 +212,7 @@ class GameScene: SKScene {
         currentRun.latestEvent = .finishedAnimating
     }
 
+    // MARK: Methods
     private func checkForCompletedRowsAndColumns() {
         let rowCorrectCounts = currentRun.currentPuzzle.rowCorrectCounts
         let columnCorrectCounts = currentRun.currentPuzzle.columnCorrectCounts
@@ -255,15 +261,6 @@ class GameScene: SKScene {
             resetRowLabels()
             resetNonogramCells()
         }
-    }
-
-    private func transitionToGameOverScreen() {
-        AudioManager.stopBackgroundMusic()
-        let transition = SKTransition.doorsCloseVertical(withDuration: 0.4)
-        guard let gameOverScreenScene = GameOverScreenScene(fileNamed: SceneNames.gameOverScreenScene) else { return }
-        gameOverScreenScene.scaleMode = .aspectFit
-        gameOverScreenScene.finishedRun = currentRun
-        scene?.view?.presentScene(gameOverScreenScene, transition: transition)
     }
 
     private func setAnimatedEventsLabelText(for event: EventToAnimate) {
@@ -333,6 +330,16 @@ class GameScene: SKScene {
 
             animatedEventsLabel.run(actionSequence)
         }
+    }
+
+    // MARK: Navigation
+    private func transitionToGameOverScreen() {
+        AudioManager.stopBackgroundMusic()
+        let transition = SKTransition.doorsCloseVertical(withDuration: 0.4)
+        guard let gameOverScreenScene = GameOverScreenScene(fileNamed: SceneNames.gameOverScreenScene) else { return }
+        gameOverScreenScene.scaleMode = .aspectFit
+        gameOverScreenScene.finishedRun = currentRun
+        scene?.view?.presentScene(gameOverScreenScene, transition: transition)
     }
 
 }

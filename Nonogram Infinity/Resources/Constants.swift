@@ -32,6 +32,8 @@ struct GameNodeNames {
 }
 
 struct GameOverScreenNodeNames {
+    static let highScoreTitleLabel = "High Score Title Label"
+    static let highScoreValueLabel = "High Score Value Label"
     static let quitLabel = "Quit Label"
     static let reopenLabel = "Reopen Label"
     static let scoreLabel = "Score Value Label"

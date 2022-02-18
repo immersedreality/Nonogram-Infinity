@@ -14,6 +14,8 @@ class GameOverScreenScene: SKScene {
     var finishedRun: Run!
 
     var scoreLabel = SKLabelNode()
+    var highScoreTitleLabel = SKLabelNode()
+    var highScoreValueLabel = SKLabelNode()
     var reopenLabel = SKLabelNode()
     var quitLabel = SKLabelNode()
 
@@ -24,7 +26,7 @@ class GameOverScreenScene: SKScene {
 
     override func didMove(to view: SKView) {
         setUpScoreLabel()
-        saveHighScoreIfApplicable()
+        setUpHighScoreLabels()
     }
 
     private func setUpReopenLabel() {
@@ -43,10 +45,26 @@ class GameOverScreenScene: SKScene {
         scoreLabel.text = String(finishedRun.totalScore)
     }
 
-    private func saveHighScoreIfApplicable() {
-        if finishedRun.totalScore > PersistedSettings.allTimeHighScore {
-            PersistedSettings.allTimeHighScore = finishedRun.totalScore
+    private func setUpHighScoreLabels() {
+        guard let highScoreTitleLabel = self.childNode(withName: GameOverScreenNodeNames.highScoreTitleLabel) as? SKLabelNode else { return }
+        self.highScoreTitleLabel = highScoreTitleLabel
+
+        guard let highScoreValueLabel = self.childNode(withName: GameOverScreenNodeNames.highScoreValueLabel) as? SKLabelNode else { return }
+        self.highScoreValueLabel = highScoreValueLabel
+
+        let currentHighScore = PersistedSettings.allTimeHighScore
+        if finishedRun.totalScore > currentHighScore {
+            highScoreTitleLabel.text = "NEW HIGH SCORE!"
+            highScoreValueLabel.isHidden = true
+            saveHighScore()
+        } else {
+            highScoreValueLabel.text = String(currentHighScore)
         }
+
+    }
+
+    private func saveHighScore() {
+        PersistedSettings.allTimeHighScore = finishedRun.totalScore
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
