@@ -64,17 +64,6 @@ class GameScene: SKScene {
     private func setUpTimeLabel() {
         guard let timeLabel = self.childNode(withName: GameNodeNames.timeLabel) as? SKLabelNode else { return }
         self.timeLabel = timeLabel
-
-        currentRun.gameTimer.$secondsRemaining
-            .sink { newTime in
-                if newTime > 0 {
-                    self.timeLabel.text = String(newTime)
-                } else {
-                    self.removeAction(forKey: ActionKeys.timer)
-                    self.transitionToGameOverScreen()
-                }
-            }
-            .store(in: &cancellables)
     }
 
     private func setUpAnimatedEventsLabel() {
@@ -118,20 +107,37 @@ class GameScene: SKScene {
     }
 
     private func setUpTimer() {
+        guard !currentRun.isForPractice else {
+            self.timeLabel.text = "∞"
+            return
+        }
+
+        currentRun.gameTimer.$secondsRemaining
+            .sink { newTime in
+                if newTime > 0 {
+                    self.timeLabel.text = String(newTime)
+                } else {
+                    self.removeAction(forKey: ActionKeys.timer)
+                    self.transitionToGameOverScreen()
+                }
+            }
+            .store(in: &cancellables)
+
         run(SKAction.repeatForever(currentRun.gameTimer.timerSequence), withKey: ActionKeys.timer)
     }
 
     private func setUpAudio() {
+        guard !currentRun.isForPractice else { return }
         if !PersistedSettings.musicDisabled {
             AudioManager.startBackgroundMusic()
         }
     }
 
-    func setUpAntiCheat() {
+    private func setUpAntiCheat() {
         NotificationCenter.default.addObserver(self, selector: #selector(preventCheatAttempt), name: UIApplication.userDidTakeScreenshotNotification, object: nil)
     }
 
-    func removeAntiCheat() {
+    private func removeAntiCheat() {
         NotificationCenter.default.removeObserver(self, name: UIApplication.userDidTakeScreenshotNotification, object: nil)
     }
 
@@ -265,6 +271,13 @@ class GameScene: SKScene {
         if numberOfCellsFilled == currentRun.currentPuzzle.totalCorrectCount {
             HapticsManager.playCompleteEvent()
             AudioManager.play(soundEffect: .complete)
+
+            guard !currentRun.isForPractice else {
+                setAnimatedEventsLabelText(for: .practiceCompleted)
+                animateAwayAnimatedEventsLabel()
+                return
+            }
+
             setAnimatedEventsLabelText(for: .completed)
             animateAwayAnimatedEventsLabel()
             currentRun.gameTimer.secondsRemaining += 10
@@ -285,6 +298,8 @@ class GameScene: SKScene {
             return
         case .miss:
             animatedEventsLabel.text = currentRun.animatedEventsLabelMissText
+        case .practiceCompleted:
+            animatedEventsLabel.text = currentRun.animatedEventsLabelPracticeCompletedText
         }
         animatedEventsLabel.removeAllActions()
         animatedEventsLabel.position = CGPoint(x: 0, y: 150)
@@ -341,6 +356,19 @@ class GameScene: SKScene {
             ])
 
             animatedEventsLabel.run(actionSequence)
+        case .practiceCompleted:
+            animatedEventsLabel.removeAllActions()
+            animatedEventsLabel.position = CGPoint(x: 0, y: 150)
+            animatedEventsLabel.setScale(1.0)
+            animatedEventsLabel.alpha = 1.0
+
+            let actionSequence = SKAction.sequence([
+                SKAction.wait(forDuration: 1.0),
+                SKAction.fadeOut(withDuration: 0.2),
+                SKAction.run { self.transitionToHowToPlayScene() }
+            ])
+
+            animatedEventsLabel.run(actionSequence)
         }
     }
 
@@ -358,6 +386,13 @@ class GameScene: SKScene {
         gameOverScreenScene.scaleMode = .aspectFit
         gameOverScreenScene.finishedRun = currentRun
         scene?.view?.presentScene(gameOverScreenScene, transition: transition)
+    }
+
+    private func transitionToHowToPlayScene() {
+        let transition = SKTransition.doorsCloseHorizontal(withDuration: 0.4)
+        guard let howToPlayScene = HowToPlayScene(fileNamed: SceneNames.howToPlayScene) else { return }
+        howToPlayScene.scaleMode = .aspectFit
+        scene?.view?.presentScene(howToPlayScene, transition: transition)
     }
 
 }

@@ -11,13 +11,16 @@ import Combine
 
 class Run {
 
+    // MARK: Game Components
     var gameTimer = GameTimer()
     var currentPuzzle = Puzzle()
 
+    // MARK: Scoring Properties
     var currentTouchCellIndexes: [Int] = []
     var currentTouchScore: Int = 0
     @Published var totalScore: Int = 0
 
+    // MARK: Animation Properties
     var animatedEventsLabelCorrectText: String {
         if currentTouchScore == 10 {
             return String(currentTouchScore)
@@ -27,11 +30,14 @@ class Run {
     }
     let animatedEventsLabelMissText = "-5 SEC"
     let animatedEventsLabelCompletedText = "+10 SEC"
+    let animatedEventsLabelPracticeCompletedText = "NICE!"
     var latestEvent: EventToAnimate = .correct
 
+    // MARK: State Properties
+    var isForPractice = false
     var userAttemptedToCheat = false
 }
 
 enum EventToAnimate {
-    case completed, correct, finishedAnimating, miss
+    case completed, correct, finishedAnimating, miss, practiceCompleted
 }

@@ -41,6 +41,7 @@ struct GameOverScreenNodeNames {
 
 struct HowToPlayNodeNames {
     static let gotItLabel = "Got It Label"
+    static let practiceLabel = "Practice Label"
 }
 
 struct SceneNames {
