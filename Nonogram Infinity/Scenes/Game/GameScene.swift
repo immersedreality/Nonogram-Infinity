@@ -27,6 +27,7 @@ class GameScene: SKScene {
 
     // MARK: Lifecycle
     override func sceneDidLoad() {
+        super.sceneDidLoad()
         setUpPlayableArea()
         setUpScoreLabel()
         setUpTimeLabel()
@@ -36,6 +37,7 @@ class GameScene: SKScene {
     }
 
     override func didMove(to view: SKView) {
+        super.didMove(to: view)
         setUpTimer()
         setUpAudio()
         setUpAntiCheat()
@@ -278,9 +280,10 @@ class GameScene: SKScene {
                 return
             }
 
+            currentRun.puzzlesCompleted += 1
             setAnimatedEventsLabelText(for: .completed)
             animateAwayAnimatedEventsLabel()
-            currentRun.gameTimer.secondsRemaining += 10
+            currentRun.gameTimer.secondsRemaining += currentRun.bonusSeconds
             currentRun.currentPuzzle = Puzzle()
             setUpPuzzleLabels()
             resetRowLabels()

@@ -7,6 +7,7 @@
 //
 
 import SpriteKit
+import GameKit
 import GameplayKit
 
 class TitleScreenScene: SKScene {
@@ -19,11 +20,17 @@ class TitleScreenScene: SKScene {
     var highScoreValueLabel = SKLabelNode()
 
     override func sceneDidLoad() {
+        super.sceneDidLoad()
         setUpHelpLabel()
         setUpOpenLabel()
         setUpSettingsLabel()
         setUpCreditsLabel()
         setUpHighScoreLabels()
+    }
+
+    override func didMove(to view: SKView) {
+        super.didMove(to: view)
+        LeaderboardManager.authenticateLocalPlayer()
     }
 
     private func setUpHelpLabel() {
@@ -78,6 +85,8 @@ class TitleScreenScene: SKScene {
             handleSettingsLabelTouch()
         } else if touchedNode.contains(creditsLabel) {
             handleCreditsLabelTouch()
+        } else if touchedNode.contains(highScoreTitleLabel) || touchedNode.contains(highScoreValueLabel) {
+            handleHighScoreLabelTouch()
         }
     }
 
@@ -120,6 +129,10 @@ class TitleScreenScene: SKScene {
         guard let creditsScene = CreditsScene(fileNamed: SceneNames.creditsScene) else { return }
         creditsScene.scaleMode = .aspectFit
         scene?.view?.presentScene(creditsScene, transition: transition)
+    }
+
+    private func handleHighScoreLabelTouch() {
+        LeaderboardManager.viewLeaderboard()
     }
 
 }

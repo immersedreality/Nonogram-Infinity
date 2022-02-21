@@ -17,6 +17,7 @@ class SettingsScene: SKScene {
     var backLabel = SKLabelNode()
 
     override func sceneDidLoad() {
+        super.sceneDidLoad()
         setUpMusicLabels()
         setUpHandLabels()
         setUpBackLabel()

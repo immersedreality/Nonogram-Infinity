@@ -14,6 +14,7 @@ class HowToPlayScene: SKScene {
     var gotItLabel = SKLabelNode()
 
     override func sceneDidLoad() {
+        super.sceneDidLoad()
         setUpPracticeLabel()
         setUpGotItLabel()
     }

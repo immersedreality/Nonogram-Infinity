@@ -20,11 +20,13 @@ class GameOverScreenScene: SKScene {
     var quitLabel = SKLabelNode()
 
     override func sceneDidLoad() {
+        super.sceneDidLoad()
         setUpReopenLabel()
         setUpQuitLabel()
     }
 
     override func didMove(to view: SKView) {
+        super.didMove(to: view)
         setUpScoreLabel()
         setUpHighScoreLabels()
     }
@@ -70,6 +72,7 @@ class GameOverScreenScene: SKScene {
     }
 
     private func saveHighScore() {
+        LeaderboardManager.submit(score: finishedRun.totalScore)
         PersistedSettings.allTimeHighScore = finishedRun.totalScore
     }
 
@@ -82,6 +85,8 @@ class GameOverScreenScene: SKScene {
             handleReopenLabelTouch()
         } else if touchedNode.contains(quitLabel) {
             handleQuitLabelTouch()
+        } else if touchedNode.contains(highScoreTitleLabel) || touchedNode.contains(highScoreValueLabel) {
+            handleHighScoreLabelTouch()
         }
     }
 
@@ -107,7 +112,8 @@ class GameOverScreenScene: SKScene {
         scene?.view?.presentScene(titleScreenScene, transition: transition)
     }
 
-    override func update(_ currentTime: TimeInterval) {
+    private func handleHighScoreLabelTouch() {
+        LeaderboardManager.viewLeaderboard()
     }
-
+    
 }

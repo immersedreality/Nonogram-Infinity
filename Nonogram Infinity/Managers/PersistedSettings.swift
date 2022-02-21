@@ -8,7 +8,7 @@
 
 import Foundation
 
-class PersistedSettings {
+final class PersistedSettings {
 
     static var userHasClaimedTheyGotIt: Bool {
         get {

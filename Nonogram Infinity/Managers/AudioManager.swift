@@ -8,7 +8,7 @@
 
 import AVKit
 
-class AudioManager {
+final class AudioManager {
 
     static var bgmPlayer = AVAudioPlayer()
     static var completePlayer = AVAudioPlayer()

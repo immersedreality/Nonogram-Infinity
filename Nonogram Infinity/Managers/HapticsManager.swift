@@ -10,7 +10,7 @@ import Foundation
 import CoreHaptics
 import UIKit
 
-class HapticsManager {
+final class HapticsManager {
 
     static let impactGenerator = UIImpactFeedbackGenerator()
     static let hapticEngine = try? CHHapticEngine()

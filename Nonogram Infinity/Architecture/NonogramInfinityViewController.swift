@@ -8,13 +8,17 @@
 
 import UIKit
 import SpriteKit
-import GameplayKit
+import GameKit
 
 class NonogramInfinityViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpTitleScreenScene()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
     }
 
     private func setUpTitleScreenScene() {
@@ -27,6 +31,14 @@ class NonogramInfinityViewController: UIViewController {
 
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+
+}
+
+extension NonogramInfinityViewController: UINavigationControllerDelegate, GKGameCenterControllerDelegate {
+
+    func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
+        gameCenterViewController.dismiss(animated:true)
     }
 
 }

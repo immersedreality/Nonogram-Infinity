@@ -9,7 +9,7 @@
 import SpriteKit
 import GameplayKit
 
-class SolutionGenerator {
+final class SolutionGenerator {
 
     class func generateSolution() -> [[Bool]] {
 

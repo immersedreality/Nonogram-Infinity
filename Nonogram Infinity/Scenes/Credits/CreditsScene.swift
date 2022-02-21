@@ -18,6 +18,7 @@ class CreditsScene: SKScene {
     var backLabel = SKLabelNode()
 
     override func sceneDidLoad() {
+        super.sceneDidLoad()
         setUpLinkLabels()
         setUpBackLabel()
     }
