@@ -71,6 +71,7 @@ struct TitleScreenNodeNames {
     static let helpLabel = "Help Label"
     static let highScoreTitleLabel = "High Score Title Label"
     static let highScoreValueLabel = "High Score Value Label"
+    static let leaderboardsLabel = "Leaderboards Label"
     static let openLabel = "Open Label"
     static let settingsLabel = "Settings Label"
 }

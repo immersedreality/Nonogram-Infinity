@@ -46,7 +46,7 @@ final class LeaderboardManager {
         }
     }
 
-    class func viewLeaderboard() {
+    class func viewLeaderboards() {
         if let containingViewController = self.containingViewController, isConnectedToGameCenter {
             let gameCenterViewController = GKGameCenterViewController(state: .leaderboards)
             gameCenterViewController.gameCenterDelegate = containingViewController

@@ -15,6 +15,7 @@ class TitleScreenScene: SKScene {
     var helpLabel = SKLabelNode()
     var openLabel = SKLabelNode()
     var settingsLabel = SKLabelNode()
+    var leaderboardsLabel = SKLabelNode()
     var creditsLabel = SKLabelNode()
     var highScoreTitleLabel = SKLabelNode()
     var highScoreValueLabel = SKLabelNode()
@@ -24,6 +25,7 @@ class TitleScreenScene: SKScene {
         setUpHelpLabel()
         setUpOpenLabel()
         setUpSettingsLabel()
+        setUpLeaderboardsLabel()
         setUpCreditsLabel()
         setUpHighScoreLabels()
     }
@@ -47,6 +49,11 @@ class TitleScreenScene: SKScene {
     private func setUpSettingsLabel() {
         guard let settingsLabel = self.childNode(withName: TitleScreenNodeNames.settingsLabel) as? SKLabelNode else { return }
         self.settingsLabel = settingsLabel
+    }
+
+    private func setUpLeaderboardsLabel() {
+        guard let leaderboardsLabel = self.childNode(withName: TitleScreenNodeNames.leaderboardsLabel) as? SKLabelNode else { return }
+        self.leaderboardsLabel = leaderboardsLabel
     }
 
     private func setUpCreditsLabel() {
@@ -83,10 +90,10 @@ class TitleScreenScene: SKScene {
             handleOpenLabelTouch()
         } else if touchedNode.contains(settingsLabel) {
             handleSettingsLabelTouch()
+        } else if touchedNode.contains(leaderboardsLabel) {
+            handleLeaderboardsLabelTouch()
         } else if touchedNode.contains(creditsLabel) {
             handleCreditsLabelTouch()
-        } else if touchedNode.contains(highScoreTitleLabel) || touchedNode.contains(highScoreValueLabel) {
-            handleHighScoreLabelTouch()
         }
     }
 
@@ -124,15 +131,15 @@ class TitleScreenScene: SKScene {
         scene?.view?.presentScene(settingsScene, transition: transition)
     }
 
+    private func handleLeaderboardsLabelTouch() {
+        LeaderboardManager.viewLeaderboards()
+    }
+
     private func handleCreditsLabelTouch() {
         let transition = SKTransition.doorsOpenHorizontal(withDuration: 0.4)
         guard let creditsScene = CreditsScene(fileNamed: SceneNames.creditsScene) else { return }
         creditsScene.scaleMode = .aspectFit
         scene?.view?.presentScene(creditsScene, transition: transition)
     }
-
-    private func handleHighScoreLabelTouch() {
-        LeaderboardManager.viewLeaderboard()
-    }
-
+    
 }

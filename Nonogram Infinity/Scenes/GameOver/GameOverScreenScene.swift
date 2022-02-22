@@ -85,9 +85,8 @@ class GameOverScreenScene: SKScene {
             handleReopenLabelTouch()
         } else if touchedNode.contains(quitLabel) {
             handleQuitLabelTouch()
-        } else if touchedNode.contains(highScoreTitleLabel) || touchedNode.contains(highScoreValueLabel) {
-            handleHighScoreLabelTouch()
         }
+        
     }
 
     private func handleReopenLabelTouch() {
@@ -110,10 +109,6 @@ class GameOverScreenScene: SKScene {
         guard let titleScreenScene = TitleScreenScene(fileNamed: SceneNames.titleScreenScene) else { return }
         titleScreenScene.scaleMode = .aspectFit
         scene?.view?.presentScene(titleScreenScene, transition: transition)
-    }
-
-    private func handleHighScoreLabelTouch() {
-        LeaderboardManager.viewLeaderboard()
     }
     
 }
