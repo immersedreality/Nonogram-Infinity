@@ -31,6 +31,7 @@ final class LeaderboardManager {
                 localPlayer.loadDefaultLeaderboardIdentifier { identifier, _ in
                     if let identifier = identifier {
                         self.defaultLeaderboardIdentifier = identifier
+                        self.fetchGameCenterHighScore()
                     }
                 }
             } else if let gameCenterViewController = gameCenterViewController {
@@ -47,6 +48,18 @@ final class LeaderboardManager {
     class func submit(score: Int) {
         if let leaderboardIdentifier = defaultLeaderboardIdentifier, isConnectedToGameCenter {
             GKLeaderboard.submitScore(score, context: 0, player: GKLocalPlayer.local, leaderboardIDs: [leaderboardIdentifier], completionHandler: { _ in })
+        }
+    }
+
+    class func fetchGameCenterHighScore() {
+        if let leaderboardIdentifier = defaultLeaderboardIdentifier, isConnectedToGameCenter {
+            Task {
+                guard let leaderboards = try? await GKLeaderboard.loadLeaderboards(IDs: [leaderboardIdentifier]) else { return }
+                guard let localPlayerEntry = try? await leaderboards.first?.loadEntries(for: [GKLocalPlayer.local], timeScope: .allTime).0 else { return }
+                if localPlayerEntry.score > PersistedSettings.allTimeHighScore {
+                    PersistedSettings.allTimeHighScore = localPlayerEntry.score
+                }
+            }
         }
     }
 

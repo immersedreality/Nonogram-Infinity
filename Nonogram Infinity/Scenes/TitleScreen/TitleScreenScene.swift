@@ -28,11 +28,7 @@ class TitleScreenScene: SKScene {
         setUpLeaderboardsLabel()
         setUpCreditsLabel()
         setUpHighScoreLabels()
-    }
-
-    override func didMove(to view: SKView) {
-        super.didMove(to: view)
-        LeaderboardManager.authenticateLocalPlayer()
+        setUpHighScoreObserver()
     }
 
     private func setUpHelpLabel() {
@@ -61,7 +57,7 @@ class TitleScreenScene: SKScene {
         self.creditsLabel = creditsLabel
     }
 
-    private func setUpHighScoreLabels() {
+    @objc private func setUpHighScoreLabels() {
         guard let highScoreTitleLabel = self.childNode(withName: TitleScreenNodeNames.highScoreTitleLabel) as? SKLabelNode else { return }
         self.highScoreTitleLabel = highScoreTitleLabel
 
@@ -77,6 +73,10 @@ class TitleScreenScene: SKScene {
             highScoreTitleLabel.isHidden = true
             highScoreValueLabel.isHidden = true
         }
+    }
+
+    private func setUpHighScoreObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(setUpHighScoreLabels), name: NSNotification.Name(NotificationNames.newHighScore), object: nil)
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {

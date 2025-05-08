@@ -34,9 +34,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.rootViewController = storyboard.instantiateInitialViewController()
         window?.makeKeyAndVisible()
         AudioManager.configurePlayers()
-        Task {
-            await AdManager.shared.loadAd()
-        }
     }
 
     func sceneWillResignActive(_ scene: UIScene) {
@@ -44,6 +41,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneDidBecomeActive(_ scene: UIScene) {
+        LeaderboardManager.authenticateLocalPlayer()
+        AdManager.shared.requestIDFA()
         removeCheaterStopperWindow()
     }
 

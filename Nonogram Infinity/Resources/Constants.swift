@@ -49,6 +49,10 @@ struct HowToPlayNodeNames {
     static let practiceLabel = "Practice Label"
 }
 
+struct NotificationNames {
+    static let newHighScore = "newHighScore"
+}
+
 struct SceneNames {
     static let creditsScene = "CreditsScene"
     static let gameOverScreenScene = "GameOverScreenScene"

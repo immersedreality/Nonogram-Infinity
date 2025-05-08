@@ -7,6 +7,7 @@
 //
 
 import GoogleMobileAds
+import AppTrackingTransparency
 
 final class AdManager: NSObject, FullScreenContentDelegate {
 
@@ -21,8 +22,18 @@ final class AdManager: NSObject, FullScreenContentDelegate {
         let activeScene = windowScenes.filter { $0.activationState == .foregroundActive }
         return activeScene.first?.keyWindow?.rootViewController as? NonogramInfinityViewController
     }
-    
-    func loadAd() async {
+
+    func requestIDFA() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            ATTrackingManager.requestTrackingAuthorization(completionHandler: { status in
+                Task {
+                    await self.loadAd()
+                }
+            })
+        }
+    }
+
+    private func loadAd() async {
       do {
         self.interstitialAd = try await InterstitialAd.load(
           with: AdUnitIds.prod, request: Request())

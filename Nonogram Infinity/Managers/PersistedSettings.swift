@@ -25,6 +25,7 @@ final class PersistedSettings {
         }
         set {
             UserDefaults.standard.set(newValue, forKey: UserDefaultKeys.allTimeHighScore)
+            NotificationCenter.default.post(name: NSNotification.Name(NotificationNames.newHighScore), object: nil)
         }
     }
 
