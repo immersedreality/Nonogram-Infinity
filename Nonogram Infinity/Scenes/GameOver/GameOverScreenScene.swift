@@ -29,6 +29,7 @@ class GameOverScreenScene: SKScene {
         super.didMove(to: view)
         setUpScoreLabel()
         setUpHighScoreLabels()
+        AdManager.shared.showAd()
     }
 
     private func setUpReopenLabel() {
@@ -77,6 +78,7 @@ class GameOverScreenScene: SKScene {
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard !AdManager.shared.awaitingAdToShow else { return }
         guard let touch = touches.first else { return }
         let touchLocation = touch.location(in: self)
         let touchedNode = nodes(at: touchLocation)

@@ -11,11 +11,15 @@ import GameKit
 
 final class LeaderboardManager {
 
-    private static var containingViewController = UIApplication.shared.delegate?.window??.rootViewController as? NonogramInfinityViewController
-
     static var isConnectedToGameCenter = false
     static var defaultLeaderboardIdentifier: String?
 
+    private static var containingViewController: NonogramInfinityViewController? {
+        let windowScenes = UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }
+        let activeScene = windowScenes.filter { $0.activationState == .foregroundActive }
+        return activeScene.first?.keyWindow?.rootViewController as? NonogramInfinityViewController
+    }
+    
     class func authenticateLocalPlayer() {
 
         let localPlayer: GKLocalPlayer = GKLocalPlayer.local
@@ -30,7 +34,7 @@ final class LeaderboardManager {
                     }
                 }
             } else if let gameCenterViewController = gameCenterViewController {
-                // MARK: Apparently this checkes to see if the user can be logged in?
+                // MARK: Apparently this checks to see if the user can be logged in?
                 containingViewController?.present(gameCenterViewController, animated: true, completion: nil)
             } else {
                 // MARK: Fail silently because I don't care

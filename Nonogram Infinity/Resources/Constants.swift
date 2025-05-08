@@ -12,6 +12,11 @@ struct ActionKeys {
     static let timer = "Timer"
 }
 
+struct AdUnitIds {
+    static let prod = "ca-app-pub-7985623540006861/8504729833"
+    static let test = "ca-app-pub-3940256099942544/4411468910"
+}
+
 struct CreditsNodeNames {
     static let backLabel = "Back Label"
     static let bozoDesignLabsLabel = "Bozo Design Labs Label"

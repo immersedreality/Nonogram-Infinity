@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -32,7 +32,7 @@
 		B80D3EBA27BB71A30095D777 /* Score.wav in Resources */ = {isa = PBXBuildFile; fileRef = B80D3EB927BB71A30095D777 /* Score.wav */; };
 		B80D3EBD27BC1FA10095D777 /* CreditsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80D3EBC27BC1FA10095D777 /* CreditsScene.swift */; };
 		B80D3EBF27BC1FD30095D777 /* CreditsScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B80D3EBE27BC1FD30095D777 /* CreditsScene.sks */; };
-		B824BACD24AE63AD00FB59DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B824BACC24AE63AD00FB59DC /* AppDelegate.swift */; };
+		B824BACD24AE63AD00FB59DC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B824BACC24AE63AD00FB59DC /* SceneDelegate.swift */; };
 		B824BAD324AE63AD00FB59DC /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B824BAD224AE63AD00FB59DC /* GameScene.swift */; };
 		B824BAD524AE63AD00FB59DC /* NonogramInfinityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B824BAD424AE63AD00FB59DC /* NonogramInfinityViewController.swift */; };
 		B824BAD824AE63AD00FB59DC /* NonogramInfinity.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B824BAD624AE63AD00FB59DC /* NonogramInfinity.storyboard */; };
@@ -40,6 +40,8 @@
 		B824BADD24AE63B000FB59DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B824BADB24AE63B000FB59DC /* LaunchScreen.storyboard */; };
 		B842FCE927C42E5B00D54492 /* LeaderboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B842FCE827C42E5B00D54492 /* LeaderboardManager.swift */; };
 		B89F69A424B41D2D00472067 /* GameScene-RightHanded.sks in Resources */ = {isa = PBXBuildFile; fileRef = B89F69A324B41D2D00472067 /* GameScene-RightHanded.sks */; };
+		B8D33BE12DCC2FDB00FAD5CB /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = B8D33BE02DCC2FDB00FAD5CB /* GoogleMobileAds */; };
+		B8D33BE32DCC34F100FAD5CB /* AdManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D33BE22DCC34ED00FAD5CB /* AdManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,7 +71,7 @@
 		B80D3EBC27BC1FA10095D777 /* CreditsScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsScene.swift; sourceTree = "<group>"; };
 		B80D3EBE27BC1FD30095D777 /* CreditsScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CreditsScene.sks; sourceTree = "<group>"; };
 		B824BAC924AE63AD00FB59DC /* Nonogram ∞.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Nonogram ∞.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B824BACC24AE63AD00FB59DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B824BACC24AE63AD00FB59DC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		B824BAD224AE63AD00FB59DC /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		B824BAD424AE63AD00FB59DC /* NonogramInfinityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonogramInfinityViewController.swift; sourceTree = "<group>"; };
 		B824BAD724AE63AD00FB59DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/NonogramInfinity.storyboard; sourceTree = "<group>"; };
@@ -78,6 +80,8 @@
 		B824BADE24AE63B000FB59DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B842FCE827C42E5B00D54492 /* LeaderboardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardManager.swift; sourceTree = "<group>"; };
 		B89F69A324B41D2D00472067 /* GameScene-RightHanded.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "GameScene-RightHanded.sks"; sourceTree = "<group>"; };
+		B8D33BE22DCC34ED00FAD5CB /* AdManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdManager.swift; sourceTree = "<group>"; };
+		B8D33BE42DCC3F2E00FAD5CB /* Nonogram Infinity.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Nonogram Infinity.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8D33BE12DCC2FDB00FAD5CB /* GoogleMobileAds in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,7 +182,7 @@
 		B824BACB24AE63AD00FB59DC /* Nonogram Infinity */ = {
 			isa = PBXGroup;
 			children = (
-				B824BACC24AE63AD00FB59DC /* AppDelegate.swift */,
+				B824BACC24AE63AD00FB59DC /* SceneDelegate.swift */,
 				B845AC8624AE883900DE204F /* Entitites */,
 				B845AC8924AE8A1D00DE204F /* Managers */,
 				B845AC8824AE892400DE204F /* Resources */,
@@ -205,6 +210,7 @@
 				B824BADE24AE63B000FB59DC /* Info.plist */,
 				B824BAD924AE63B000FB59DC /* Assets.xcassets */,
 				B809DB7A24B40F3D007F58EF /* Constants.swift */,
+				B8D33BE42DCC3F2E00FAD5CB /* Nonogram Infinity.entitlements */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -212,6 +218,7 @@
 		B845AC8924AE8A1D00DE204F /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				B8D33BE22DCC34ED00FAD5CB /* AdManager.swift */,
 				B80D3EA527B491230095D777 /* PersistedSettings.swift */,
 				B80D3E9827B454460095D777 /* SolutionGenerator.swift */,
 				B80D3EAD27BB2FC50095D777 /* HapticsManager.swift */,
@@ -270,8 +277,9 @@
 		B824BAC124AE63AD00FB59DC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1150;
-				LastUpgradeCheck = 1320;
+				LastUpgradeCheck = 1630;
 				ORGANIZATIONNAME = "Bozo Design Labs";
 				TargetAttributes = {
 					B824BAC824AE63AD00FB59DC = {
@@ -288,6 +296,9 @@
 				Base,
 			);
 			mainGroup = B824BAC024AE63AD00FB59DC;
+			packageReferences = (
+				B8D33BDF2DCC2FDB00FAD5CB /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
+			);
 			productRefGroup = B824BACA24AE63AD00FB59DC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -336,13 +347,14 @@
 				B80650EC24B4022600A4F958 /* TitleScreenScene.swift in Sources */,
 				B80650F024B40A5800A4F958 /* SettingsScene.swift in Sources */,
 				B842FCE927C42E5B00D54492 /* LeaderboardManager.swift in Sources */,
+				B8D33BE32DCC34F100FAD5CB /* AdManager.swift in Sources */,
 				B80D3E9D27B46F5F0095D777 /* GameTimer.swift in Sources */,
 				B80D3EBD27BC1FA10095D777 /* CreditsScene.swift in Sources */,
 				B809DB7B24B40F3D007F58EF /* Constants.swift in Sources */,
 				B80D3EB827BB5CB30095D777 /* AudioManager.swift in Sources */,
 				B80D3E9927B454460095D777 /* SolutionGenerator.swift in Sources */,
 				B824BAD524AE63AD00FB59DC /* NonogramInfinityViewController.swift in Sources */,
-				B824BACD24AE63AD00FB59DC /* AppDelegate.swift in Sources */,
+				B824BACD24AE63AD00FB59DC /* SceneDelegate.swift in Sources */,
 				B80D3E9B27B457080095D777 /* Run.swift in Sources */,
 				B80D3E9527B44A540095D777 /* NonogramCell.swift in Sources */,
 			);
@@ -405,8 +417,10 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = LNM9247SFR;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -466,8 +480,10 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = LNM9247SFR;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -490,9 +506,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Nonogram Infinity/Resources/Nonogram Infinity.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 8;
-				DEVELOPMENT_TEAM = LNM9247SFR;
 				INFOPLIST_FILE = "Nonogram Infinity/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -510,9 +526,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Nonogram Infinity/Resources/Nonogram Infinity.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 8;
-				DEVELOPMENT_TEAM = LNM9247SFR;
 				INFOPLIST_FILE = "Nonogram Infinity/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -548,6 +564,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B8D33BDF2DCC2FDB00FAD5CB /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.4.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B8D33BE02DCC2FDB00FAD5CB /* GoogleMobileAds */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B8D33BDF2DCC2FDB00FAD5CB /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
+			productName = GoogleMobileAds;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B824BAC124AE63AD00FB59DC /* Project object */;
 }
